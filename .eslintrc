@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "@sudolabs-io/eslint-config-sudolabs/typescript",
+    "@sudolabs-io/eslint-config-sudolabs/with/prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "enum",
+        "format": ["PascalCase"]
+      },
+      {
+        "selector": "enumMember",
+        "format": ["PascalCase"]
+      },
+      {
+        "selector": "variable",
+        "types": ["boolean"],
+        "format": ["PascalCase"],
+        "prefix": ["is", "has", "do", "does", "are"]
+      }
+    ]
+  }
+}
