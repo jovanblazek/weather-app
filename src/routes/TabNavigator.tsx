@@ -1,28 +1,51 @@
 import React from 'react'
+import { Icon } from 'react-native-eva-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Home from '../screens/Home'
-import MyList from '../screens/MyList'
-import Settings from '../screens/Settings'
-import { Feather } from '@expo/vector-icons'
+import { Home, MyList, Settings } from '../screens'
 
 const Tab = createBottomTabNavigator()
 
+// TODO make enum for routes, simplify icon
 export const TabNavigator = () => {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       screenOptions={({ route }) => ({
+        headerShown: false,
         tabBarIcon: ({ color, size }) => {
           if (route.name === 'MyList') {
-            return <Feather name="cloud" size={size} color={color} />
-          } else if (route.name === 'Home') {
-            return <Feather name="home" size={size} color={color} />
+            return (
+              <Icon
+                name="list-outline"
+                width={size}
+                height={size}
+                fill={color}
+              />
+            )
           }
-          return <Feather name="settings" size={size} color={color} />
+          if (route.name === 'Home') {
+            return (
+              <Icon
+                name="home-outline"
+                width={size}
+                height={size}
+                fill={color}
+              />
+            )
+          }
+          return (
+            <Icon
+              name="settings-2-outline"
+              width={size}
+              height={size}
+              fill={color}
+            />
+          )
         },
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: {
-          height: 60,
+          height: 90,
         },
       })}
     >

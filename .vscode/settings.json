@@ -1,13 +1,13 @@
 {
-    "files.insertFinalNewline": true,
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "eslint.workingDirectories": [{
-      "pattern": "./*"
+  "files.insertFinalNewline": true,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.workingDirectories": [
+    {
+      "pattern": "./"
     }
   ],
   "typescript.tsdk": "node_modules/typescript/lib"
-  }
-  
+}

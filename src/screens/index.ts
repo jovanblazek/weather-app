@@ -1,4 +1,3 @@
 export * from './Home'
-export * from './Settings'
-
 export * from './MyList'
+export * from './Settings'
