@@ -1,57 +1,37 @@
 import React from 'react'
-import { Icon } from 'react-native-eva-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Home, MyList, Settings } from '../screens'
+import { Colors } from 'theme'
+import { Icon, IconName } from 'components'
+import { TabRoutes } from 'routes'
+import { Home, MyList, Settings } from 'screens'
 
 const Tab = createBottomTabNavigator()
 
-// TODO make enum for routes, simplify icon
 export const TabNavigator = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName={TabRoutes.Home}
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarIcon: ({ color, size }) => {
-          if (route.name === 'MyList') {
-            return (
-              <Icon
-                name="list-outline"
-                width={size}
-                height={size}
-                fill={color}
-              />
-            )
+        tabBarIcon: ({ color }) => {
+          let iconName: IconName = 'settings'
+
+          if (route.name === TabRoutes.List) {
+            iconName = 'list'
           }
-          if (route.name === 'Home') {
-            return (
-              <Icon
-                name="home-outline"
-                width={size}
-                height={size}
-                fill={color}
-              />
-            )
+          if (route.name === TabRoutes.Home) {
+            iconName = 'map-pin'
           }
-          return (
-            <Icon
-              name="settings-2-outline"
-              width={size}
-              height={size}
-              fill={color}
-            />
-          )
+          return <Icon name={iconName} size="sm" color={color} />
         },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
-        tabBarStyle: {
-          height: 90,
-        },
+        tabBarActiveTintColor: Colors.blue,
+        tabBarInactiveTintColor: Colors.grayDark,
+        tabBarShowLabel: false,
       })}
     >
-      <Tab.Screen name="MyList" component={MyList} />
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen name={TabRoutes.List} component={MyList} />
+      <Tab.Screen name={TabRoutes.Home} component={Home} />
+      <Tab.Screen name={TabRoutes.Settings} component={Settings} />
     </Tab.Navigator>
   )
 }

@@ -1,10 +1,10 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Heading, ScreenWrapper } from 'components'
 
 export const MyList = () => {
   return (
-    <View>
-      <Text>List</Text>
-    </View>
+    <ScreenWrapper>
+      <Heading>My Locations</Heading>
+    </ScreenWrapper>
   )
 }

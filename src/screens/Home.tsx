@@ -1,11 +1,16 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { Heading } from '../components/common'
+import { Box, Flex } from 'native-base'
+import { Heading, ScreenWrapper } from 'components'
 
 export const Home = () => {
   return (
-    <SafeAreaView>
+    <ScreenWrapper>
       <Heading>Home</Heading>
-    </SafeAreaView>
+      <Flex alignItems="center">
+        <Box>hello</Box>
+        <Box>hello</Box>
+        <Box>hello</Box>
+      </Flex>
+    </ScreenWrapper>
   )
 }

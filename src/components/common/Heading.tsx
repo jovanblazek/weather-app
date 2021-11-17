@@ -1,10 +1,10 @@
 import React from 'react'
-import { Text } from '@ui-kitten/components'
+import { Heading as NbHeading } from 'native-base'
 
 interface Props {
   children: string
 }
 
 export const Heading = ({ children }: Props) => (
-  <Text category="h1">{children}</Text>
+  <NbHeading fontSize="4xl">{children}</NbHeading>
 )
