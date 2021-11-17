@@ -6,5 +6,7 @@ interface Props {
 }
 
 export const Heading = ({ children }: Props) => (
-  <NbHeading fontSize="4xl">{children}</NbHeading>
+  <NbHeading fontSize="4xl" mb="4">
+    {children}
+  </NbHeading>
 )
