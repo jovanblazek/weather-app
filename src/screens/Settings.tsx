@@ -1,36 +1,55 @@
 import React from 'react'
-import { CheckIcon, Divider, Select, VStack } from 'native-base'
-import { Heading, ScreenWrapper, SettingsItem } from 'components'
-
-const LanguageSelect = () => (
-  <Select
-    minWidth="180"
-    accessibilityLabel="Language"
-    placeholder="Language"
-    _selectedItem={{
-      bg: 'blue.200',
-      endIcon: <CheckIcon size="5" />,
-    }}
-    mt={1}
-    onValueChange={(itemValue) => console.log(itemValue)}
-  >
-    <Select.Item label="UX Research" value="ux" />
-    <Select.Item label="Web Development" value="web" />
-    <Select.Item label="Cross Platform Development" value="cross" />
-    <Select.Item label="UI Designing" value="ui" />
-    <Select.Item label="Backend Development" value="backend" />
-  </Select>
-)
+import Constants from 'expo-constants'
+import { Box, Divider, Text, VStack } from 'native-base'
+import { Heading, ScreenWrapper, Select, SettingsItem } from 'components'
 
 export const Settings = () => {
   return (
     <ScreenWrapper>
       <Heading>Settings</Heading>
       <VStack space={2} divider={<Divider />}>
-        <SettingsItem rightElement={<LanguageSelect />}>Language</SettingsItem>
-        <SettingsItem>Hello</SettingsItem>
-        <SettingsItem>Hello</SettingsItem>
+        <SettingsItem
+          rightElement={
+            <Select
+              placeholder="Language"
+              items={[
+                { label: 'English', value: 'en' },
+                { label: 'Slovak', value: 'sk' },
+              ]}
+              onChange={(value) => {
+                console.log(value)
+              }}
+              selectedValue="en"
+            />
+          }
+        >
+          Language
+        </SettingsItem>
+        <SettingsItem
+          rightElement={
+            <Select
+              placeholder="Units"
+              items={[
+                { label: 'Celsius', value: 'c' },
+                { label: 'Fahrenheit ', value: 'f' },
+              ]}
+              onChange={(value) => {
+                console.log(value)
+              }}
+              selectedValue="c"
+            />
+          }
+        >
+          Units
+        </SettingsItem>
+        <SettingsItem rightElement={Constants.manifest?.version}>
+          Version
+        </SettingsItem>
       </VStack>
+      <Box mt="16">
+        <Text textAlign="center">Made with ♥</Text>
+        <Text textAlign="center">&copy; Jovan Blazek 2021</Text>
+      </Box>
     </ScreenWrapper>
   )
 }

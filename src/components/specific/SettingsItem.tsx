@@ -9,6 +9,11 @@ interface Props {
 export const SettingsItem = ({ rightElement, children }: Props) => (
   <HStack justifyContent="space-between" alignItems="center" py="2">
     <Text>{children}</Text>
-    {rightElement ?? null}
+
+    {typeof rightElement === 'string' ? (
+      <Text>{rightElement}</Text>
+    ) : (
+      rightElement ?? null
+    )}
   </HStack>
 )
