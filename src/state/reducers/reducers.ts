@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { AnyAction } from 'redux'
-import { Actions } from 'state'
 import { Languages, WeatherUnits } from 'utils'
+import { Actions } from '../actions'
 
 export const languageReducer = (
   state = Languages.English,

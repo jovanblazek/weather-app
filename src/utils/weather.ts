@@ -1,4 +1,4 @@
-import { WeatherType } from 'utils'
+import { WeatherType } from './constants'
 
 export const getWeatherGradient = (weather: WeatherType) => {
   let colorStart

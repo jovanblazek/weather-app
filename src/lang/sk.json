@@ -1,0 +1,16 @@
+{
+  "translation": {
+    "home": {
+      "title": "Domov"
+    },
+    "list": {
+      "title": "Moje Lokácie"
+    },
+    "settings": {
+      "title": "Nastavenia",
+      "language": "Jazyk",
+      "units": "Jednotky",
+      "version": "Verzia"
+    }
+  }
+}

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useAppSelector } from 'hooks'
-import { Text, VStack } from 'native-base'
+import { VStack } from 'native-base'
 import { Heading, LocationItem, ScreenWrapper } from 'components'
 import { WeatherType } from 'utils'
 
@@ -32,14 +33,18 @@ const locationsData = [
 ]
 
 export const MyList = () => {
-  const currentLanguage = useAppSelector((state) => state.language)
-  const currentWeatherUnit = useAppSelector((state) => state.weatherUnit)
+  const { t, i18n } = useTranslation()
+  const language = useAppSelector((state) => state.language)
+
+  useEffect(() => {
+    if (language !== i18n.language) {
+      void i18n.changeLanguage(language)
+    }
+  }, [language])
+
   return (
     <ScreenWrapper>
-      <Heading>My Locations</Heading>
-      <Text>
-        {currentLanguage} {currentWeatherUnit}
-      </Text>
+      <Heading>{t('list.title')}</Heading>
       <VStack space={4}>
         {locationsData.map(({ id, ...rest }) => (
           <LocationItem key={id} {...rest} />

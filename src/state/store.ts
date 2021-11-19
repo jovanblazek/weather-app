@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { AnyAction, applyMiddleware, createStore } from 'redux'
+import { persistReducer, persistStore } from 'redux-persist'
 import { Languages, WeatherUnits } from 'utils'
 import reducers from './reducers'
 
@@ -25,11 +27,23 @@ function logger({ getState }: { getState: any }) {
   }
 }
 
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+}
+
+const persistedReducer = persistReducer<AppState, AnyAction>(
+  persistConfig,
+  reducers
+)
+
 export const store = createStore<AppState, AnyAction, unknown, unknown>(
-  reducers,
+  persistedReducer as any,
   INITIAL_STATE,
   applyMiddleware(logger)
 )
+
+export const persistor = persistStore(store)
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
