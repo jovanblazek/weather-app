@@ -4,3 +4,13 @@ export enum WeatherType {
   Rain = 'rain',
   Snow = 'snow',
 }
+
+export enum WeatherUnits {
+  Celsius = 'C',
+  Fahrenheit = 'F',
+}
+
+export enum Languages {
+  English = 'en',
+  Slovak = 'sk',
+}

@@ -1,5 +1,6 @@
 import React from 'react'
-import { VStack } from 'native-base'
+import { useAppSelector } from 'hooks'
+import { Text, VStack } from 'native-base'
 import { Heading, LocationItem, ScreenWrapper } from 'components'
 import { WeatherType } from 'utils'
 
@@ -31,9 +32,14 @@ const locationsData = [
 ]
 
 export const MyList = () => {
+  const currentLanguage = useAppSelector((state) => state.language)
+  const currentWeatherUnit = useAppSelector((state) => state.weatherUnit)
   return (
     <ScreenWrapper>
       <Heading>My Locations</Heading>
+      <Text>
+        {currentLanguage} {currentWeatherUnit}
+      </Text>
       <VStack space={4}>
         {locationsData.map(({ id, ...rest }) => (
           <LocationItem key={id} {...rest} />

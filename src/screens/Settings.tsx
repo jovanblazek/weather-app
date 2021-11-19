@@ -1,9 +1,16 @@
 import React from 'react'
 import Constants from 'expo-constants'
+import { useAppDispatch, useAppSelector } from 'hooks'
 import { Box, Divider, Text, VStack } from 'native-base'
+import { changeLanguage, changeWeatherUnit } from 'state'
 import { Heading, ScreenWrapper, Select, SettingsItem } from 'components'
+import { Languages, WeatherUnits } from 'utils'
 
 export const Settings = () => {
+  const currentLanguage = useAppSelector((state) => state.language)
+  const currentWeatherUnit = useAppSelector((state) => state.weatherUnit)
+  const dispatch = useAppDispatch()
+
   return (
     <ScreenWrapper>
       <Heading>Settings</Heading>
@@ -13,13 +20,13 @@ export const Settings = () => {
             <Select
               placeholder="Language"
               items={[
-                { label: 'English', value: 'en' },
-                { label: 'Slovak', value: 'sk' },
+                { label: 'English', value: Languages.English },
+                { label: 'Slovak', value: Languages.Slovak },
               ]}
               onChange={(value) => {
-                console.log(value)
+                dispatch(changeLanguage(value as Languages))
               }}
-              selectedValue="en"
+              selectedValue={currentLanguage}
             />
           }
         >
@@ -30,13 +37,13 @@ export const Settings = () => {
             <Select
               placeholder="Units"
               items={[
-                { label: 'Celsius', value: 'c' },
-                { label: 'Fahrenheit ', value: 'f' },
+                { label: 'Celsius', value: WeatherUnits.Celsius },
+                { label: 'Fahrenheit ', value: WeatherUnits.Fahrenheit },
               ]}
               onChange={(value) => {
-                console.log(value)
+                dispatch(changeWeatherUnit(value as WeatherUnits))
               }}
-              selectedValue="c"
+              selectedValue={currentWeatherUnit}
             />
           }
         >
