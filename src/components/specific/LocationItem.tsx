@@ -1,14 +1,22 @@
 import React from 'react'
-import { Flex, HStack, Text } from 'native-base'
-import { getWeatherGradient, WeatherType } from 'utils'
+import { useWeatherCondition } from 'hooks'
+import { Flex, HStack, Image, Text } from 'native-base'
+import {
+  getTemperatureUnit,
+  getWeatherGradient,
+  WeatherConditionImage,
+  WeatherUnit,
+} from 'utils'
 
 interface Props {
   city: string
   temperature: number
-  weather: WeatherType
+  unit: WeatherUnit
+  weather: number
 }
 
-export const LocationItem = ({ city, temperature, weather }: Props) => {
+export const LocationItem = ({ city, temperature, unit, weather }: Props) => {
+  const weatherCondition = useWeatherCondition(weather)
   return (
     <Flex
       justifyContent="space-between"
@@ -17,13 +25,19 @@ export const LocationItem = ({ city, temperature, weather }: Props) => {
       p="4"
       rounded="md"
       color="yellow.200"
-      bg={{ linearGradient: getWeatherGradient(weather) }}
+      bg={{ linearGradient: getWeatherGradient(weatherCondition) }}
     >
       <Text fontSize="2xl">{city}</Text>
       <HStack space={4} alignItems="center">
-        <Text>{weather}</Text>
+        <Image
+          source={WeatherConditionImage[weatherCondition].image}
+          w="32px"
+          h="32px"
+          resizeMode="contain"
+        />
         <Text width="20" textAlign="right" fontSize="2xl">
-          {temperature}&deg;C
+          {temperature}
+          {getTemperatureUnit(unit)}
         </Text>
       </HStack>
     </Flex>

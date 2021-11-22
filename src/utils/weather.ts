@@ -1,18 +1,18 @@
-import { WeatherType } from './constants'
+import { WeatherCondition, WeatherUnit } from './constants'
 
-export const getWeatherGradient = (weather: WeatherType) => {
+export const getWeatherGradient = (weather: WeatherCondition) => {
   let colorStart
   let colorEnd
   switch (weather) {
-    case WeatherType.Clear:
+    case WeatherCondition.Clear:
       colorStart = 'orange.200'
       colorEnd = 'yellow.400'
       break
-    case WeatherType.Cloudy:
+    case WeatherCondition.Cloudy:
       colorStart = 'gray.400'
       colorEnd = 'gray.400'
       break
-    case WeatherType.Rain:
+    case WeatherCondition.Rain:
       colorStart = 'blue.300'
       colorEnd = 'blue.500'
       break
@@ -27,4 +27,11 @@ export const getWeatherGradient = (weather: WeatherType) => {
     start: [0, 0],
     end: [1, 0],
   }
+}
+
+export const getTemperatureUnit = (weatherUnit: WeatherUnit) => {
+  if (weatherUnit === WeatherUnit.Celsius) {
+    return '\u00B0C'
+  }
+  return '\u00B0F'
 }

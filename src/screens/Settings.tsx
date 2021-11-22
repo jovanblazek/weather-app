@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from 'hooks'
 import { Box, Divider, Text, VStack } from 'native-base'
 import { changeLanguage, changeWeatherUnit } from 'state'
 import { Heading, ScreenWrapper, Select, SettingsItem } from 'components'
-import { Languages, WeatherUnits } from 'utils'
+import { Language, WeatherUnit } from 'utils'
 
 export const Settings = () => {
   const language = useAppSelector((state) => state.language)
@@ -28,11 +28,11 @@ export const Settings = () => {
             <Select
               placeholder={t('settings.language')}
               items={[
-                { label: 'English', value: Languages.English },
-                { label: 'Slovak', value: Languages.Slovak },
+                { label: 'English', value: Language.English },
+                { label: 'Slovak', value: Language.Slovak },
               ]}
               onChange={(value) => {
-                dispatch(changeLanguage(value as Languages))
+                dispatch(changeLanguage(value as Language))
               }}
               selectedValue={language}
             />
@@ -45,11 +45,11 @@ export const Settings = () => {
             <Select
               placeholder={t('settings.units')}
               items={[
-                { label: 'Celsius', value: WeatherUnits.Celsius },
-                { label: 'Fahrenheit ', value: WeatherUnits.Fahrenheit },
+                { label: 'Celsius', value: WeatherUnit.Celsius },
+                { label: 'Fahrenheit ', value: WeatherUnit.Fahrenheit },
               ]}
               onChange={(value) => {
-                dispatch(changeWeatherUnit(value as WeatherUnits))
+                dispatch(changeWeatherUnit(value as WeatherUnit))
               }}
               selectedValue={weatherUnit}
             />

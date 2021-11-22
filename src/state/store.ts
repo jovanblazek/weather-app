@@ -3,17 +3,17 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { AnyAction, applyMiddleware, createStore } from 'redux'
 import { persistReducer, persistStore } from 'redux-persist'
-import { Languages, WeatherUnits } from 'utils'
+import { Language, WeatherUnit } from 'utils'
 import reducers from './reducers'
 
 interface AppState {
-  language: Languages
-  weatherUnit: WeatherUnits
+  language: Language
+  weatherUnit: WeatherUnit
 }
 
 const INITIAL_STATE = {
-  language: Languages.English,
-  weatherUnit: WeatherUnits.Celsius,
+  language: Language.English,
+  weatherUnit: WeatherUnit.Celsius,
 }
 
 function logger({ getState }: { getState: any }) {

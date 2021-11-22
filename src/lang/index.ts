@@ -1,16 +1,16 @@
 import { initReactI18next } from 'react-i18next'
 import i18n from 'i18next'
-import { Languages } from 'utils'
+import { Language } from 'utils'
 import en from './en.json'
 import sk from './sk.json'
 
 const resources = {
-  [Languages.English]: en,
-  [Languages.Slovak]: sk,
+  [Language.English]: en,
+  [Language.Slovak]: sk,
 }
 
 export default i18n.use(initReactI18next).init({
   resources,
-  fallbackLng: Languages.English,
-  lng: Languages.English,
+  fallbackLng: Language.English,
+  lng: Language.English,
 })
