@@ -9,38 +9,46 @@ export enum WeatherCondition {
   Windy = 'windy',
 }
 
-export const WeatherConditionImage = {
+export const WeatherConditionData = {
   [WeatherCondition.Clear]: {
-    image: require('images/sunny.svg'),
-    image_night: require('images/night.svg'),
+    condition: WeatherCondition.Clear,
+    image: require('images/sunny.png'),
+    image_night: require('images/night.png'),
   },
   [WeatherCondition.Cloudy]: {
-    image: require('images/cloudy.svg'),
-    image_night: require('images/cloudy.svg'),
+    condition: WeatherCondition.Cloudy,
+    image: require('images/cloudy.png'),
+    image_night: require('images/cloudy.png'),
   },
   [WeatherCondition.Fog]: {
-    image: require('images/fog.svg'),
-    image_night: require('images/fog_night.svg'),
+    condition: WeatherCondition.Fog,
+    image: require('images/fog.png'),
+    image_night: require('images/fog_night.png'),
   },
   [WeatherCondition.PartlyCloudy]: {
-    image: require('images/partly_cloudy.svg'),
-    image_night: require('images/partly_cloudy_night.svg'),
+    condition: WeatherCondition.PartlyCloudy,
+    image: require('images/partly_cloudy.png'),
+    image_night: require('images/partly_cloudy_night.png'),
   },
   [WeatherCondition.Rain]: {
-    image: require('images/rain.svg'),
-    image_night: require('images/rain_night.svg'),
+    condition: WeatherCondition.Rain,
+    image: require('images/rain.png'),
+    image_night: require('images/rain_night.png'),
   },
   [WeatherCondition.Snow]: {
-    image: require('images/snow.svg'),
-    image_night: require('images/snow_night.svg'),
+    condition: WeatherCondition.Snow,
+    image: require('images/snow.png'),
+    image_night: require('images/snow_night.png'),
   },
   [WeatherCondition.Thunder]: {
-    image: require('images/thunder.svg'),
-    image_night: require('images/thunder.svg'),
+    condition: WeatherCondition.Thunder,
+    image: require('images/thunder.png'),
+    image_night: require('images/thunder.png'),
   },
   [WeatherCondition.Windy]: {
-    image: require('images/windy.svg'),
-    image_night: require('images/windy.svg'),
+    condition: WeatherCondition.Windy,
+    image: require('images/windy.png'),
+    image_night: require('images/windy.png'),
   },
 }
 

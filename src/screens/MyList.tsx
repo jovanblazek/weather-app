@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useAppSelector } from 'hooks'
-import { VStack } from 'native-base'
-import { Heading, LocationItem, ScreenWrapper } from 'components'
+import { Button, FlatList, Flex } from 'native-base'
+import { Heading, Icon, LocationItem, ScreenWrapper } from 'components'
 
 const locationsData = [
   {
@@ -43,13 +43,48 @@ export const MyList = () => {
   }, [language])
 
   return (
-    <ScreenWrapper>
-      <Heading>{t('list.title')}</Heading>
-      <VStack space={4}>
-        {locationsData.map(({ id, ...rest }) => (
-          <LocationItem key={id} unit={weatherUnit} {...rest} />
-        ))}
-      </VStack>
-    </ScreenWrapper>
+    <Flex
+      flexGrow={1}
+      bg={{
+        linearGradient: {
+          colors: ['#2d91c2', '#1e528e'],
+          start: [0, 0],
+          end: [0, 1],
+        },
+      }}
+    >
+      <ScreenWrapper
+        SafeAreaStyles={{
+          flex: 1,
+        }}
+      >
+        <Flex direction="row" justifyContent="space-between">
+          <Heading color="white">{t('list.title')}</Heading>
+          <Button
+            bgColor="transparent"
+            height="40px"
+            width="40px"
+            mt="1"
+            onPress={() => console.log('add pressed')}
+          >
+            <Icon color="#fff" name="plus" size="6" />
+          </Button>
+        </Flex>
+        <FlatList
+          data={locationsData}
+          renderItem={({ item }) => (
+            <LocationItem
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+              key={item.id.toString()}
+              mb="4"
+              unit={weatherUnit}
+              {...item}
+            />
+          )}
+          showsVerticalScrollIndicator={false}
+          mb="42px"
+        />
+      </ScreenWrapper>
+    </Flex>
   )
 }

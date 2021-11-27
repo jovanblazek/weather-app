@@ -1,12 +1,12 @@
 import React from 'react'
-import { Heading as NbHeading } from 'native-base'
+import { Heading as NbHeading, IHeadingProps } from 'native-base'
 
-interface Props {
+interface Props extends IHeadingProps {
   children: string
 }
 
-export const Heading = ({ children }: Props) => (
-  <NbHeading fontSize="4xl" mb="4">
+export const Heading = ({ children, ...rest }: Props) => (
+  <NbHeading fontSize="4xl" mb="8" {...rest}>
     {children}
   </NbHeading>
 )

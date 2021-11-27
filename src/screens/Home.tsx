@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import Constants from 'expo-constants'
 import * as Location from 'expo-location'
 import { LocationObject } from 'expo-location'
 import { useAppSelector } from 'hooks'
-import { Flex, Spinner, Text } from 'native-base'
+import { Flex, ScrollView, Spinner, Text } from 'native-base'
 import { Heading, ScreenWrapper } from 'components'
+import { getWeatherGradient, WeatherCondition } from 'utils'
 
 export const Home = () => {
   const [location, setLocation] = useState<LocationObject | null>(null)
@@ -35,7 +38,7 @@ export const Home = () => {
       setLocation(currentLocation)
     })()
   }, [])
-
+  /*
   useEffect(() => {
     if (location && weatherUnit) {
       void fetch(
@@ -53,20 +56,36 @@ export const Home = () => {
         })
     }
   }, [location, weatherUnit])
-
+*/
   return (
-    <ScreenWrapper>
-      <Heading>{t('home.title')}</Heading>
-      <Flex alignItems="center">
-        {isLoading && <Spinner />}
-        {errorMsg && <Text>{errorMsg}</Text>}
-        {weather && (
-          <>
-            <Text>{weather.name}</Text>
-            <Text>{weather.main.temp}</Text>
-          </>
-        )}
-      </Flex>
-    </ScreenWrapper>
+    <Flex
+      flexGrow={1}
+      bg={{ linearGradient: getWeatherGradient(WeatherCondition.Clear) }}
+    >
+      <ScreenWrapper
+        SafeAreaStyles={{
+          flex: 1,
+        }}
+      >
+        <Heading>San Francisco</Heading>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Flex alignItems="center" flexGrow={1} alignSelf="stretch">
+            {errorMsg && <Text>{errorMsg}</Text>}
+            <Text h="24">aassa</Text>
+            <Text h="24">aassa</Text>
+            <Text h="24">aassa</Text>
+            <Text h="24">aassa</Text>
+            <Text h="24">aassa</Text>
+            <Text h="24">aassa</Text>
+            <Text h="24">aassa</Text>
+            <Text h="24">aassa</Text>
+            <Text h="24">aassa</Text>
+            <Text h="24">aassa</Text>
+            <Text h="24">aassa</Text>
+            <Text h="24">aassa</Text>
+          </Flex>
+        </ScrollView>
+      </ScreenWrapper>
+    </Flex>
   )
 }

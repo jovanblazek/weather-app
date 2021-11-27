@@ -1,18 +1,18 @@
-import { WeatherCondition } from 'utils'
+import { WeatherCondition, WeatherConditionData } from 'utils'
 
 export const useWeatherCondition = (code: number) => {
   switch (code) {
     // Clear
     case 800:
-      return WeatherCondition.Clear
+      return WeatherConditionData[WeatherCondition.Clear]
 
     // Cloud
     case 801:
     case 802:
-      return WeatherCondition.PartlyCloudy
+      return WeatherConditionData[WeatherCondition.PartlyCloudy]
     case 803:
     case 804:
-      return WeatherCondition.Cloudy
+      return WeatherConditionData[WeatherCondition.Cloudy]
 
     // Rain
     case 500:
@@ -25,7 +25,7 @@ export const useWeatherCondition = (code: number) => {
     case 504:
     case 522:
     case 531:
-      return WeatherCondition.Rain
+      return WeatherConditionData[WeatherCondition.Rain]
 
     // Drizzle
     case 300:
@@ -37,7 +37,7 @@ export const useWeatherCondition = (code: number) => {
     case 313:
     case 314:
     case 321:
-      return WeatherCondition.Rain
+      return WeatherConditionData[WeatherCondition.Rain]
 
     // Thunderstorm
     case 200:
@@ -50,7 +50,7 @@ export const useWeatherCondition = (code: number) => {
     case 230:
     case 231:
     case 232:
-      return WeatherCondition.Thunder
+      return WeatherConditionData[WeatherCondition.Thunder]
 
     // Snow
     case 600:
@@ -64,7 +64,7 @@ export const useWeatherCondition = (code: number) => {
     case 620:
     case 621:
     case 622:
-      return WeatherCondition.Snow
+      return WeatherConditionData[WeatherCondition.Snow]
 
     // Atmosphere
     case 701:
@@ -77,9 +77,9 @@ export const useWeatherCondition = (code: number) => {
     case 762:
     case 771:
     case 781:
-      return WeatherCondition.Fog
+      return WeatherConditionData[WeatherCondition.Fog]
 
     default:
-      return WeatherCondition.Clear
+      return WeatherConditionData[WeatherCondition.Clear]
   }
 }

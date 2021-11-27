@@ -5,8 +5,8 @@ export const getWeatherGradient = (weather: WeatherCondition) => {
   let colorEnd
   switch (weather) {
     case WeatherCondition.Clear:
-      colorStart = 'orange.200'
-      colorEnd = 'yellow.400'
+      colorStart = 'yellow.300'
+      colorEnd = 'orange.300'
       break
     case WeatherCondition.Cloudy:
       colorStart = 'gray.400'
@@ -25,7 +25,7 @@ export const getWeatherGradient = (weather: WeatherCondition) => {
   return {
     colors: [colorStart, colorEnd],
     start: [0, 0],
-    end: [1, 0],
+    end: [1, 1],
   }
 }
 
